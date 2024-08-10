@@ -38,3 +38,12 @@ def record_engine_temperature():
 @app.route('/collect', methods=['POST'])
 def collect_engine_temperature():
     return {"success": True}, 200
+
+@app.route('/collect', methods=['POST'])
+def current_engine_temperature():
+    return {"success": True}, 20
+
+@app.route('/collect', methods=['POST'])
+def average_engine_temperature():
+    return {"success": True}, 20
+
