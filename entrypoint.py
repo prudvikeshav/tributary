@@ -1,18 +1,15 @@
-# import dependencies
 import json
+
 import redis as redis
 from flask import Flask, request
 from loguru import logger
 
-# define constants
 HISTORY_LENGTH = 10
 DATA_KEY = "engine_temperature"
 
-# create a Flask server, and allow us to interact with it using the app variable
 app = Flask(__name__)
 
 
-# define an endpoint which accepts POST requests, and is reachable from the /record endpoint
 @app.route('/record', methods=['POST'])
 def record_engine_temperature():
     payload = request.get_json(force=True)
@@ -34,7 +31,6 @@ def record_engine_temperature():
     return {"success": True}, 200
 
 
-# we'll implement this in the next step!
 @app.route('/collect', methods=['POST'])
 def collect_engine_temperature():
     database = redis.Redis(host="redis", port=6379, db=0, decode_responses=True)
